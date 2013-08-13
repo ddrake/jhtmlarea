@@ -45,7 +45,7 @@
                 var iframe = this.iframe = $("<iframe/>").height(textarea.height());
                 // jQuery.browser is deprecated
                 //iframe.width(textarea.width() - ($.browser.msie ? 0 : 4));
-                iframe.width(textarea.width() - 4;
+                iframe.width(textarea.width() - 4);
                 var htmlarea = this.htmlarea = $("<div/>").append(iframe);
 
                 container.append(htmlarea).append(textarea.hide());
