@@ -7,7 +7,7 @@
       margin: 1px; 
       padding: 1px; 
       float: left; 
-      background: #fff image-url('jhtmlarea/jHtmlArea_Toolbar_Group_BG.png') repeat-x;
+      background: #fff image-url('jHtmlArea_Toolbar_Group_BG.png') repeat-x;
       li { 
         list-style-type: none; 
         float: left; 
@@ -15,14 +15,14 @@
       }
       li:hover { 
         border: solid 1px #ccc; 
-        background: #ddd image-url('jhtmlarea/jHtmlArea_Toolbar_Group__Btn_Select_BG.png'); 
+        background: #ddd image-url('jHtmlArea_Toolbar_Group__Btn_Select_BG.png'); 
         padding: 0; 
       }
       li a { 
         display: block; 
         width: 16px; 
         height: 16px; 
-        background: image-url('jhtmlarea/jHtmlArea.png') no-repeat -16px -500px; 
+        background: image-url('jHtmlArea.png') no-repeat -16px -500px; 
         border: none; 
         cursor: pointer; 
         padding: 0px; 
