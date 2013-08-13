@@ -1,5 +1,2 @@
 require "jhtmlarea/version"
-
-module Jhtmlarea
-
-end
+require "jhtmlarea/engine"
