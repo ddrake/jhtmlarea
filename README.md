@@ -20,6 +20,7 @@ Or install it yourself as:
 
 Add the following to app/assets/javascripts/application.js:
 
+    //= require browserDetect
     //= require jHtmlArea-0.7.5
     //= require jHtmlArea.ColorPickerMenu-0.7.0
 
@@ -60,11 +61,9 @@ Then add this code to the view with your form (you can edit out any buttons you 
 </script>
 ~~~
 
-## Limitations
+## Notes
 
-### This gem seems to work fine in Firefox and Chrome, but may not work as well with Safari or IE.
-
-The original jHtmlArea 0.7.5 source caused errors in Rails 4 since it calls the `$.browser` function which is [no longer supported in jQuery 1.9](http://stackoverflow.com/questions/14524289/browser-is-undefined-error).  [jQuery recommends](http://jquery.com/upgrade-guide/1.9/#jquery-browser-removed) using a library such as [Modernizer](http://modernizr.com/) for feature detection.  In the interest of getting a working editor as quickly as possible, I edited out this feature detection code from the original jHtmlArea source code.
+The original jHtmlArea 0.7.5 source caused errors in Rails 4 since it calls the `$.browser` function which is [no longer supported in jQuery 1.9](http://stackoverflow.com/questions/14524289/browser-is-undefined-error).  [jQuery recommends](http://jquery.com/upgrade-guide/1.9/#jquery-browser-removed) using a library such as [Modernizer](http://modernizr.com/) for feature detection, but I have not been able to use modernizer to address the browser incompatibilities handled with $.browser() in the original javascript.  These issues could be dealt with by including jquery-migrate, but instead I have included a simple browser detection script and modified the original javascript accordingly.
 
 ## Contributing
 
