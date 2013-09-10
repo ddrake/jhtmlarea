@@ -19,12 +19,11 @@
                 var rng = this.getRange();
                 jHtmlAreaColorPickerMenu($(".forecolor", this.toolbar), {
                     colorChosen: function(color) {
-                        // if ($.browser.msie) {
-                        //     rng.execCommand("ForeColor", false, color);
-                        // } else {
-                        //     that.forecolor(color);
-                        // }
-                        that.forecolor(color);
+                        if ($.browser.msie) {
+                            rng.execCommand("ForeColor", false, color);
+                        } else {
+                            that.forecolor(color);
+                        }
                     }
                 });
             }

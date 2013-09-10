@@ -3,89 +3,57 @@
   div { padding: 0px; margin: 0px; }
   .ToolBar { 
     ul { 
-      border: solid 1px #ccc; 
-      margin: 1px; 
-      padding: 1px; 
-      float: left; 
-      background: #fff image-url('jHtmlArea_Toolbar_Group_BG.png') repeat-x;
-      li { 
-        list-style-type: none; 
-        float: left; 
-        border: none; padding: 1px; margin: 1px; 
-      }
-      li:hover { 
-        border: solid 1px #ccc; 
-        background: #ddd image-url('jHtmlArea_Toolbar_Group__Btn_Select_BG.png'); 
-        padding: 0; 
-      }
-      li a { 
-        display: block; 
-        width: 16px; 
-        height: 16px; 
-        background: image-url('jHtmlArea.png') no-repeat -16px -500px; 
-        border: none; 
-        cursor: pointer; 
-        padding: 0px; 
-      }
-      li a.highlighted { 
-        border: solid 1px #aaa; 
-        background-color: #bbb; 
-        padding: 0; 
-      }
-      li.separator {
-        height: 16px; 
-        margin: 0 2px 0 3px; 
-        border-left: 1px solid #ccc;
-      }
-      li.separator:hover { 
-        padding: 1px; 
-        background-color: #fff; 
-        border-top:none; border-bottom:none; border-right:none;
-      }
+      border: solid 1px #ccc; margin: 1px; padding: 1px; float: left; background: #fff url(jHtmlArea_Toolbar_Group_BG.png) repeat-x;
+      li { list-style-type: none; float: left; border: none; padding: 1px; margin: 1px; 
 
-      li a:hover { }
-      li a.bold { background-position: 0 0; }
-      li a.italic { background-position: -16px 0; }
-      li a.underline { background-position: -32px 0; }
-      li a.strikethrough { background-position: -48px 0; }
-      li a.link { background-position: -64px 0; }
-      li a.unlink { background-position: -80px 0; }
-      li a.orderedlist { background-position: -96px 0; }
-      li a.unorderedlist { background-position: -112px 0; }
-      li a.image { background-position: -128px 0; }
-      li a.cut { background-position: -144px 0; }
-      li a.copy { background-position: -160px 0; }
-      li a.paste { background-position: -176px 0; }
+        :hover { border: solid 1px #ccc; background: #ddd url(jHtmlArea_Toolbar_Group__Btn_Select_BG.png); padding: 0; }
+        a { 
+          display: block; width: 16px; height: 16px; background: url(jHtmlArea.png) no-repeat -16px -500px; border: none; cursor: pointer; padding: 0px; 
+          .highlighted { border: solid 1px #aaa; background-color: #bbb; padding: 0; }
+        }
+        .separator {height: 16px; margin: 0 2px 0 3px; border-left: 1px solid #ccc;}
+        .separator:hover { padding: 1px; background-color: #fff; border-top:none; border-bottom:none; border-right:none;}
 
-      li a.html { 
-        background-position: -192px 0; 
-        opacity:0.6; 
-        filter:alpha(opacity=60);
+        a {
+          :hover { }
+          .bold { background-position: 0 0; }
+          .italic { background-position: -16px 0; }
+          .underline { background-position: -32px 0; }
+          .strikethrough { background-position: -48px 0; }
+          .link { background-position: -64px 0; }
+          .unlink { background-position: -80px 0; }
+          .orderedlist { background-position: -96px 0; }
+          .unorderedlist { background-position: -112px 0; }
+          .image { background-position: -128px 0; }
+          .cut { background-position: -144px 0; }
+          .copy { background-position: -160px 0; }
+          .paste { background-position: -176px 0; }
+
+          .html { background-position: -192px 0; opacity:0.6; filter:alpha(opacity=60);}
+          .html.highlighted { opacity:1.0; filter:alpha(opacity=100);}
+
+          .h1 { background-position: 0 -16px;}
+          .h2 { background-position: -16px -16px;}
+          .h3 { background-position: -32px -16px;}
+          .h4 { background-position: -48px -16px;}
+          .h5 { background-position: -64px -16px;}
+          .h6 { background-position: -80px -16px;}
+          .subscript   { background-position: -96px -16px;}
+          .superscript { background-position: -112px -16px;}
+          .indent { background-position: -128px -16px;}
+          .outdent { background-position: -144px -16px;}
+          .horizontalr   { background-position: -160px -16px;}
+          .p { background-position: -176px -16px;}
+
+
+          .justifyleft { background-position: 0 -32px;}
+          .justifycenter { background-position: -16px -32px;}
+          .justifyright { background-position: -32px -32px;}
+          .increasefontsize { background-position: -48px -32px;}
+          .decreasefontsize { background-position: -64px -32px;}
+          .forecolor { background-position: -80px -32px;}
+        }
       }
-      li a.html.highlighted { 
-        opacity:1.0; 
-        filter:alpha(opacity=100);
-      }
-
-      li a.h1 { background-position: 0 -16px;}
-      li a.h2 { background-position: -16px -16px;}
-      li a.h3 { background-position: -32px -16px;}
-      li a.h4 { background-position: -48px -16px;}
-      li a.h5 { background-position: -64px -16px;}
-      li a.h6 { background-position: -80px -16px;}
-      li a.subscript   { background-position: -96px -16px;}
-      li a.superscript { background-position: -112px -16px;}
-      li a.indent { background-position: -128px -16px;}
-      li a.outdent { background-position: -144px -16px;}
-      li a.horizontalrule { background-position: -160px -16px;}
-      li a.p { background-position: -176px -16px;}
-
-      li a.justifyleft { background-position: 0 -32px;}
-      li a.justifycenter { background-position: -16px -32px;}
-      li a.justifyright { background-position: -32px -32px;}
-      li a.increasefontsize { background-position: -48px -32px;}
-      li a.decreasefontsize { background-position: -64px -32px;}
-      li a.forecolor { background-position: -80px -32px;}
     }
   }
 }

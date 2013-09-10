@@ -4,8 +4,6 @@
 * http://jhtmlarea.codeplex.com
 * Licensed under the Microsoft Reciprocal License (Ms-RL)
 * http://jhtmlarea.codeplex.com/license
-
-* Modified by Dow Drake to use browserDetect.js for jQuery 1.9+ compatibility
 */
 (function ($) {
     $.fn.htmlarea = function (opts) {
@@ -45,9 +43,7 @@
                 priv.initToolBar.call(this, opts);
 
                 var iframe = this.iframe = $("<iframe/>").height(textarea.height());
-                // jQuery.browser is deprecated
-                //iframe.width(textarea.width() - ($.browser.msie ? 0 : 4));
-                iframe.width(textarea.width() - (BrowserDetect.browser === "Explorer" ? 0 : 4));
+                iframe.width(textarea.width() - ($.browser.msie ? 0 : 4));
                 var htmlarea = this.htmlarea = $("<div/>").append(iframe);
 
                 container.append(htmlarea).append(textarea.hide());
@@ -83,34 +79,21 @@
             return this.queryCommandValue(a);
         },
         getSelectedHTML: function () {
-            // if ($.browser.msie) {
-            //     return this.getRange().htmlText;
-            // } else {
-            //     var elem = this.getRange().cloneContents();
-            //     return $("<p/>").append($(elem)).html();
-            // }
-            if (BrowserDetect.browser === "Explorer") {
+            if ($.browser.msie) {
                 return this.getRange().htmlText;
             } else {
                 var elem = this.getRange().cloneContents();
                 return $("<p/>").append($(elem)).html();
             }
-            
         },
         getSelection: function () {
-            // if ($.browser.msie) {
-            //     //return (this.editor.parentWindow.getSelection) ? this.editor.parentWindow.getSelection() : this.editor.selection;
-            //     return this.editor.selection;
-            // } else {
-            //     return this.iframe[0].contentDocument.defaultView.getSelection();
-            // }
-            if (BrowserDetect.browser === "Explorer") {
+            if ($.browser.msie) {
                 //return (this.editor.parentWindow.getSelection) ? this.editor.parentWindow.getSelection() : this.editor.selection;
                 return this.editor.selection;
             } else {
                 return this.iframe[0].contentDocument.defaultView.getSelection();
             }
-       },
+        },
         getRange: function () {
             var s = this.getSelection();
             if (!s) { return null; }
@@ -128,18 +111,9 @@
         pasteHTML: function (html) {
             this.iframe[0].contentWindow.focus();
             var r = this.getRange();
-            // if ($.browser.msie) {
-            //     r.pasteHTML(html);
-            // } else if ($.browser.mozilla) {
-            //     r.deleteContents();
-            //     r.insertNode($((html.indexOf("<") != 0) ? $("<span/>").append(html) : html)[0]);
-            // } else { // Safari
-            //     r.deleteContents();
-            //     r.insertNode($(this.iframe[0].contentWindow.document.createElement("span")).append($((html.indexOf("<") != 0) ? "<span>" + html + "</span>" : html))[0]);
-            // }
-            if (BrowserDetect.browser === "Explorer") {
+            if ($.browser.msie) {
                 r.pasteHTML(html);
-            } else if (BrowserDetect.browser === "Firefox" || BrowserDetect.browser === "Mozilla") {
+            } else if ($.browser.mozilla) {
                 r.deleteContents();
                 r.insertNode($((html.indexOf("<") != 0) ? $("<span/>").append(html) : html)[0]);
             } else { // Safari
@@ -163,12 +137,7 @@
         underline: function () { this.ec("underline"); },
         strikeThrough: function () { this.ec("strikethrough"); },
         image: function (url) {
-            // if ($.browser.msie && !url) {
-            //     this.ec("insertImage", true);
-            // } else {
-            //     this.ec("insertImage", false, (url || prompt("Image URL:", "http://")));
-            // }
-            if (BrowserDetect.browser === "Explorer" && !url) {
+            if ($.browser.msie && !url) {
                 this.ec("insertImage", true);
             } else {
                 this.ec("insertImage", false, (url || prompt("Image URL:", "http://")));
@@ -179,12 +148,7 @@
             this.unlink();
         },
         link: function () {
-            // if ($.browser.msie) {
-            //     this.ec("createLink", true);
-            // } else {
-            //     this.ec("createLink", false, prompt("Link URL:", "http://"));
-            // }
-            if (BrowserDetect.browser === "Explorer") {
+            if ($.browser.msie) {
                 this.ec("createLink", true);
             } else {
                 this.ec("createLink", false, prompt("Link URL:", "http://"));
@@ -218,8 +182,7 @@
             this.heading(6);
         },
         heading: function (h) {
-            // this.formatBlock($.browser.msie ? "Heading " + h : "h" + h);
-            this.formatBlock(BrowserDetect.browser === "Explorer" ? "Heading " + h : "h" + h);
+            this.formatBlock($.browser.msie ? "Heading " + h : "h" + h);
         },
 
         indent: function () {
@@ -244,32 +207,18 @@
         },
 
         increaseFontSize: function () {
-            // if ($.browser.msie) {
-            //     this.ec("fontSize", false, this.qc("fontSize") + 1);
-            // } else if ($.browser.safari) {
-            //     this.getRange().surroundContents($(this.iframe[0].contentWindow.document.createElement("span")).css("font-size", "larger")[0]);
-            // } else {
-            //     this.ec("increaseFontSize", false, "big");
-            // }
-            if (BrowserDetect.browser === "Explorer") {
+            if ($.browser.msie) {
                 this.ec("fontSize", false, this.qc("fontSize") + 1);
-            } else if (BrowserDetect.browser === "Safari") {
+            } else if ($.browser.safari) {
                 this.getRange().surroundContents($(this.iframe[0].contentWindow.document.createElement("span")).css("font-size", "larger")[0]);
             } else {
                 this.ec("increaseFontSize", false, "big");
             }
         },
         decreaseFontSize: function () {
-            // if ($.browser.msie) {
-            //     this.ec("fontSize", false, this.qc("fontSize") - 1);
-            // } else if ($.browser.safari) {
-            //     this.getRange().surroundContents($(this.iframe[0].contentWindow.document.createElement("span")).css("font-size", "smaller")[0]);
-            // } else {
-            //     this.ec("decreaseFontSize", false, "small");
-            // }
-            if (BrowserDetect.browser === "Explorer") {
+            if ($.browser.msie) {
                 this.ec("fontSize", false, this.qc("fontSize") - 1);
-            } else if (BrowserDetect.browser === "Safari") {
+            } else if ($.browser.safari) {
                 this.getRange().surroundContents($(this.iframe[0].contentWindow.document.createElement("span")).css("font-size", "smaller")[0]);
             } else {
                 this.ec("decreaseFontSize", false, "small");
