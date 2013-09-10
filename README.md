@@ -20,8 +20,8 @@ Or install it yourself as:
 
 Add the following to app/assets/javascripts/application.js:
 
-    //= require jHtmlArea-0.7.5
-    //= require jHtmlArea.ColorPickerMenu-0.7.0
+    //= require jHtmlArea-0.8.0
+    //= require jHtmlArea.ColorPickerMenu-0.8.0
 
 Add the following to app/assets/stylesheets/application.css:
 
